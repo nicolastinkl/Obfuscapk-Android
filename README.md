@@ -17,9 +17,11 @@ More details about **Obfuscapk** can be found in the paper
 "[Obfuscapk: An *open-source* black-box obfuscation tool for Android apps](https://doi.org/10.1016/j.softx.2020.100403)".
  
 
+ ![](2024-09-13_12-49-28.png)
+
 ## ❱ Architecture
 
-![Architecture](https://raw.githubusercontent.com/nicolastinkl/Obfuscapk-Android/master/docs/architecture/architecture.png)
+![Architecture](Obfuscapk-master/docs/architecture/architecture.png)
 
 Obfuscapk is designed to be modular and easy to extend, so it's built using a
 [plugin system](https://github.com/tibonihoo/yapsy). Consequently, every obfuscator is
