@@ -19,21 +19,21 @@ More details about **Obfuscapk** can be found in the paper
 
 ## ❱ Demo
 
-![Demo](https://raw.githubusercontent.com/ClaudiuGeorgiu/Obfuscapk/master/docs/demo/cli.gif)
+![Demo](https://raw.githubusercontent.com/nicolastinkl/Obfuscapk-Android/master/docs/demo/cli.gif)
 
 
 
 ## ❱ Architecture
 
-![Architecture](https://raw.githubusercontent.com/ClaudiuGeorgiu/Obfuscapk/master/docs/architecture/architecture.png)
+![Architecture](https://raw.githubusercontent.com/nicolastinkl/Obfuscapk-Android/master/docs/architecture/architecture.png)
 
 Obfuscapk is designed to be modular and easy to extend, so it's built using a
 [plugin system](https://github.com/tibonihoo/yapsy). Consequently, every obfuscator is
 a plugin that inherits from an abstract
-[base class](https://github.com/ClaudiuGeorgiu/Obfuscapk/blob/master/src/obfuscapk/obfuscator_category.py)
+[base class](https://github.com/nicolastinkl/Obfuscapk-Android/blob/master/src/obfuscapk/obfuscator_category.py)
 and needs to implement the method `obfuscate`. When the tool starts processing a new
 Android application file, it creates an
-[obfuscation object](https://github.com/ClaudiuGeorgiu/Obfuscapk/blob/master/src/obfuscapk/obfuscation.py)
+[obfuscation object](https://github.com/nicolastinkl/Obfuscapk-Android/blob/master/src/obfuscapk/obfuscation.py)
 to store all the needed information (e.g., the location of the decompiled `smali` code)
 and the internal state of the operations (e.g., the list of already used obfuscators).
 Then the obfuscation object is passed, as a parameter to the `obfuscate` method, to all
@@ -43,9 +43,9 @@ the order of the active plugins is specified through [command line options](#-us
 The tool is easily extensible with new obfuscators: it's enough to add the source code
 implementing the obfuscation technique and the plugin metadata (a
 `<obfuscator-name>.obfuscator` file) in the
-[`src/obfuscapk/obfuscators`](https://github.com/ClaudiuGeorgiu/Obfuscapk/tree/master/src/obfuscapk/obfuscators)
+[`src/obfuscapk/obfuscators`](https://github.com/nicolastinkl/Obfuscapk-Android/tree/master/src/obfuscapk/obfuscators)
 directory (take a simple existing obfuscator like
-[`Nop`](https://github.com/ClaudiuGeorgiu/Obfuscapk/blob/master/src/obfuscapk/obfuscators/nop/nop.py)
+[`Nop`](https://github.com/nicolastinkl/Obfuscapk-Android/blob/master/src/obfuscapk/obfuscators/nop/nop.py)
 as a starting example). The tool will detect automatically the new plugin, so no
 further configuration is needed (the new plugin will be treated like all the other
 plugins bundled with the tool).
@@ -61,7 +61,7 @@ copy of this repository, so open up a terminal in the directory where you want t
 the project and clone the repository:
 
 ```Shell
-$ git clone https://github.com/ClaudiuGeorgiu/Obfuscapk.git
+$ git clone https://github.com/nicolastinkl/Obfuscapk-Android.git
 ```
 
 ### Docker image
@@ -80,7 +80,7 @@ Docker version 20.10.21, build baeda1f
 
 #### Official Docker Hub image
 
-The [official Obfuscapk Docker image](https://hub.docker.com/r/claudiugeorgiu/obfuscapk)
+The [official Obfuscapk Docker image](https://hub.docker.com/r/nicolastinkl/Obfuscapk-Android)
 is available on Docker Hub (automatically built from this repository):
 
 ```Shell
@@ -254,7 +254,7 @@ without any warning.
 * `-i` is a flag for ignoring known third party libraries during the obfuscation
 process, to use fewer resources, to increase performances and to reduce the risk of
 errors. The
-[list of libraries](https://github.com/ClaudiuGeorgiu/Obfuscapk/blob/master/src/obfuscapk/resources/libs_to_ignore.txt)
+[list of libraries](https://github.com/nicolastinkl/Obfuscapk-Android/blob/master/src/obfuscapk/resources/libs_to_ignore.txt)
 to ignore is adapted from [LiteRadar](https://github.com/pkumza/LiteRadar) project.
 
 * `-p` is a flag for showing progress bars during the obfuscation operations. When
@@ -270,7 +270,7 @@ custom keystore (needed for the apk signing). If `--keystore-file` is used,
 `--keystore-password` and `--key-alias` must be specified too, while `--key-password`
 is needed only if the chosen key has a different password from the keystore password.
 By default (when `--keystore-file` is not specified), a
-[keystore bundled with Obfuscapk](https://github.com/ClaudiuGeorgiu/Obfuscapk/blob/master/src/obfuscapk/resources/obfuscation_keystore.jks)
+[keystore bundled with Obfuscapk](https://github.com/nicolastinkl/Obfuscapk-Android/blob/master/src/obfuscapk/resources/obfuscation_keystore.jks)
 is used for the signing operations.
 
 * `--ignore-packages-file IGNORE_PACKAGES_FILE` is a path to a file which includes
@@ -317,7 +317,7 @@ available and ready to be used
       
     - `NewSignature` obfuscator signs the newly created apk file with a custom 
       certificate contained in a
-      [keystore bundled with Obfuscapk](https://github.com/ClaudiuGeorgiu/Obfuscapk/blob/master/src/obfuscapk/resources/obfuscation_keystore.jks)
+      [keystore bundled with Obfuscapk](https://github.com/nicolastinkl/Obfuscapk-Android/blob/master/src/obfuscapk/resources/obfuscation_keystore.jks)
       (though a different keystore can be specified with the `--keystore-file` parameter)
 
 * when all the obfuscators have been executed without errors, the resulting obfuscated
@@ -331,8 +331,8 @@ build process, so they are included in the list of obfuscators to keep the overa
 architecture modular.
 
 Not working as expected? See
-[FAQ](https://github.com/ClaudiuGeorgiu/Obfuscapk/blob/master/docs/FAQ.md) and
-[troubleshooting](https://github.com/ClaudiuGeorgiu/Obfuscapk/blob/master/docs/TROUBLESHOOTING.md).
+[FAQ](https://github.com/nicolastinkl/Obfuscapk-Android/blob/master/docs/FAQ.md) and
+[troubleshooting](https://github.com/nicolastinkl/Obfuscapk-Android/blob/master/docs/TROUBLESHOOTING.md).
 
 
 
@@ -374,7 +374,7 @@ alphabetical order). Please refer to the source code of the project for more det
 > Uses reflection to invoke dangerous APIs of the Android Framework. To find out if a
 > method belongs to the Android Framework, Obfuscapk refers to the mapping discovered by
 > [Backes et al](https://www.usenix.org/system/files/conference/usenixsecurity16/sec16_paper_backes-android.pdf).  
-> [:page_facing_up: AdvancedReflection source code](https://github.com/ClaudiuGeorgiu/Obfuscapk/tree/master/src/obfuscapk/obfuscators/advanced_reflection)
+> [:page_facing_up: AdvancedReflection source code](https://github.com/nicolastinkl/Obfuscapk-Android/tree/master/src/obfuscapk/obfuscators/advanced_reflection)
 </details>
 
 
@@ -383,14 +383,14 @@ alphabetical order). Please refer to the source code of the project for more det
 > Insert junk code. In this case, the junk code is composed by arithmetic computations
 > and a branch instruction depending on the result of these computations, crafted in
 > such a way that the branch is never taken.  
-> [:page_facing_up: ArithmeticBranch source code](https://github.com/ClaudiuGeorgiu/Obfuscapk/tree/master/src/obfuscapk/obfuscators/arithmetic_branch)
+> [:page_facing_up: ArithmeticBranch source code](https://github.com/nicolastinkl/Obfuscapk-Android/tree/master/src/obfuscapk/obfuscators/arithmetic_branch)
 </details>
 
 
 <details><summary><b>AssetEncryption</b> [Encryption]</summary>
 
 > Encrypt asset files.  
-> [:page_facing_up: AssetEncryption source code](https://github.com/ClaudiuGeorgiu/Obfuscapk/tree/master/src/obfuscapk/obfuscators/asset_encryption)
+> [:page_facing_up: AssetEncryption source code](https://github.com/nicolastinkl/Obfuscapk-Android/tree/master/src/obfuscapk/obfuscators/asset_encryption)
 </details>
 
 
@@ -400,35 +400,35 @@ alphabetical order). Please refer to the source code of the project for more det
 > it adds new methods that invoke the original ones. For example, an invocation to the
 > method *m1* will be substituted by a new wrapper method *m2*, that, when invoked, it
 > calls the original method *m1*.  
-> [:page_facing_up: CallIndirection source code](https://github.com/ClaudiuGeorgiu/Obfuscapk/tree/master/src/obfuscapk/obfuscators/call_indirection)
+> [:page_facing_up: CallIndirection source code](https://github.com/nicolastinkl/Obfuscapk-Android/tree/master/src/obfuscapk/obfuscators/call_indirection)
 </details>
 
 
 <details><summary><b>ClassRename</b> [Rename]</summary>
 
 > Change the package name and rename classes (even in the manifest file).  
-> [:page_facing_up: ClassRename source code](https://github.com/ClaudiuGeorgiu/Obfuscapk/tree/master/src/obfuscapk/obfuscators/class_rename)
+> [:page_facing_up: ClassRename source code](https://github.com/nicolastinkl/Obfuscapk-Android/tree/master/src/obfuscapk/obfuscators/class_rename)
 </details>
 
 
 <details><summary><b>ConstStringEncryption</b> [Encryption]</summary>
 
 > Encrypt constant strings in code.  
-> [:page_facing_up: ConstStringEncryption source code](https://github.com/ClaudiuGeorgiu/Obfuscapk/tree/master/src/obfuscapk/obfuscators/const_string_encryption)
+> [:page_facing_up: ConstStringEncryption source code](https://github.com/nicolastinkl/Obfuscapk-Android/tree/master/src/obfuscapk/obfuscators/const_string_encryption)
 </details>
 
 
 <details><summary><b>DebugRemoval</b> [Code]</summary>
 
 > Remove debug information.  
-> [:page_facing_up: DebugRemoval source code](https://github.com/ClaudiuGeorgiu/Obfuscapk/tree/master/src/obfuscapk/obfuscators/debug_removal)
+> [:page_facing_up: DebugRemoval source code](https://github.com/nicolastinkl/Obfuscapk-Android/tree/master/src/obfuscapk/obfuscators/debug_removal)
 </details>
 
 
 <details><summary><b>FieldRename</b> [Rename]</summary>
 
 > Rename fields.  
-> [:page_facing_up: FieldRename source code](https://github.com/ClaudiuGeorgiu/Obfuscapk/tree/master/src/obfuscapk/obfuscators/field_rename)
+> [:page_facing_up: FieldRename source code](https://github.com/nicolastinkl/Obfuscapk-Android/tree/master/src/obfuscapk/obfuscators/field_rename)
 </details>
 
 
@@ -437,14 +437,14 @@ alphabetical order). Please refer to the source code of the project for more det
 > Given a method, it inserts a `goto` instruction pointing to the end of the method and
 > another `goto` pointing to the instruction after the first `goto`; it modifies the
 > control-flow graph by adding two new nodes.  
-> [:page_facing_up: Goto source code](https://github.com/ClaudiuGeorgiu/Obfuscapk/tree/master/src/obfuscapk/obfuscators/goto)
+> [:page_facing_up: Goto source code](https://github.com/nicolastinkl/Obfuscapk-Android/tree/master/src/obfuscapk/obfuscators/goto)
 </details>
 
 
 <details><summary><b>LibEncryption</b> [Encryption]</summary>
 
 > Encrypt native libs.  
-> [:page_facing_up: LibEncryption source code](https://github.com/ClaudiuGeorgiu/Obfuscapk/tree/master/src/obfuscapk/obfuscators/lib_encryption)
+> [:page_facing_up: LibEncryption source code](https://github.com/nicolastinkl/Obfuscapk-Android/tree/master/src/obfuscapk/obfuscators/lib_encryption)
 </details>
 
 
@@ -455,28 +455,28 @@ alphabetical order). Please refer to the source code of the project for more det
 > existing method, this technique creates a new void method with the same name and
 > arguments, but it also adds new random arguments. Then, the body of the new method
 > is filled with random arithmetic instructions.  
-> [:page_facing_up: MethodOverload source code](https://github.com/ClaudiuGeorgiu/Obfuscapk/tree/master/src/obfuscapk/obfuscators/method_overload)
+> [:page_facing_up: MethodOverload source code](https://github.com/nicolastinkl/Obfuscapk-Android/tree/master/src/obfuscapk/obfuscators/method_overload)
 </details>
 
 
 <details><summary><b>MethodRename</b> [Rename]</summary>
 
 > Rename methods.  
-> [:page_facing_up: MethodRename source code](https://github.com/ClaudiuGeorgiu/Obfuscapk/tree/master/src/obfuscapk/obfuscators/method_rename)
+> [:page_facing_up: MethodRename source code](https://github.com/nicolastinkl/Obfuscapk-Android/tree/master/src/obfuscapk/obfuscators/method_rename)
 </details>
 
 
 <details><summary><b>NewAlignment</b> [Trivial]</summary>
 
 > Realign the application.  
-> [:page_facing_up: NewAlignment source code](https://github.com/ClaudiuGeorgiu/Obfuscapk/tree/master/src/obfuscapk/obfuscators/new_alignment)
+> [:page_facing_up: NewAlignment source code](https://github.com/nicolastinkl/Obfuscapk-Android/tree/master/src/obfuscapk/obfuscators/new_alignment)
 </details>
 
 
 <details><summary><b>NewSignature</b> [Trivial]</summary>
 
 > Re-sign the application with a new custom signature.  
-> [:page_facing_up: NewSignature source code](https://github.com/ClaudiuGeorgiu/Obfuscapk/tree/master/src/obfuscapk/obfuscators/new_signature)
+> [:page_facing_up: NewSignature source code](https://github.com/nicolastinkl/Obfuscapk-Android/tree/master/src/obfuscapk/obfuscators/new_signature)
 </details>
 
 
@@ -485,21 +485,21 @@ alphabetical order). Please refer to the source code of the project for more det
 > Insert junk code. Nop, short for *no-operation*, is a dedicated instruction that does
 > nothing. This technique just inserts random `nop` instructions within every method
 > implementation.  
-> [:page_facing_up: Nop source code](https://github.com/ClaudiuGeorgiu/Obfuscapk/tree/master/src/obfuscapk/obfuscators/nop)
+> [:page_facing_up: Nop source code](https://github.com/nicolastinkl/Obfuscapk-Android/tree/master/src/obfuscapk/obfuscators/nop)
 </details>
 
 
 <details><summary><b>RandomManifest</b> [Resource]</summary>
 
 > Randomly reorder entries in the manifest file.  
-> [:page_facing_up: RandomManifest source code](https://github.com/ClaudiuGeorgiu/Obfuscapk/tree/master/src/obfuscapk/obfuscators/random_manifest)
+> [:page_facing_up: RandomManifest source code](https://github.com/nicolastinkl/Obfuscapk-Android/tree/master/src/obfuscapk/obfuscators/random_manifest)
 </details>
 
 
 <details><summary><b>Rebuild</b> [Trivial]</summary>
 
 > Rebuild the application.  
-> [:page_facing_up: Rebuild source code](https://github.com/ClaudiuGeorgiu/Obfuscapk/tree/master/src/obfuscapk/obfuscators/rebuild)
+> [:page_facing_up: Rebuild source code](https://github.com/nicolastinkl/Obfuscapk-Android/tree/master/src/obfuscapk/obfuscators/rebuild)
 </details>
 
 
@@ -510,7 +510,7 @@ alphabetical order). Please refer to the source code of the project for more det
 > an instruction with a suitable method invocation (i.e., no constructor methods,
 > public visibility, enough free registers etc.) such invocation is redirected to a
 > custom method that will invoke the original method using the Reflection APIs.  
-> [:page_facing_up: Reflection source code](https://github.com/ClaudiuGeorgiu/Obfuscapk/tree/master/src/obfuscapk/obfuscators/reflection)
+> [:page_facing_up: Reflection source code](https://github.com/nicolastinkl/Obfuscapk-Android/tree/master/src/obfuscapk/obfuscators/reflection)
 </details>
 
 
@@ -521,14 +521,14 @@ alphabetical order). Please refer to the source code of the project for more det
 > becomes *branch if greater or equal than*) and the target basic blocks are reordered
 > accordingly. Furthermore, it also randomly re-arranges the code abusing `goto`
 > instructions.  
-> [:page_facing_up: Reorder source code](https://github.com/ClaudiuGeorgiu/Obfuscapk/tree/master/src/obfuscapk/obfuscators/reorder)
+> [:page_facing_up: Reorder source code](https://github.com/nicolastinkl/Obfuscapk-Android/tree/master/src/obfuscapk/obfuscators/reorder)
 </details>
 
 
 <details><summary><b>ResStringEncryption</b> [Encryption]</summary>
 
 > Encrypt strings in resources (only those called inside code).  
-> [:page_facing_up: ResStringEncryption source code](https://github.com/ClaudiuGeorgiu/Obfuscapk/tree/master/src/obfuscapk/obfuscators/res_string_encryption)
+> [:page_facing_up: ResStringEncryption source code](https://github.com/nicolastinkl/Obfuscapk-Android/tree/master/src/obfuscapk/obfuscators/res_string_encryption)
 </details>
 
 
@@ -536,7 +536,7 @@ alphabetical order). Please refer to the source code of the project for more det
 
 > Send the original and the obfuscated application to Virus Total. You must provide
 > the VT API key (see `-k` option).  
-> [:page_facing_up: VirusTotal source code](https://github.com/ClaudiuGeorgiu/Obfuscapk/tree/master/src/obfuscapk/obfuscators/virus_total)
+> [:page_facing_up: VirusTotal source code](https://github.com/nicolastinkl/Obfuscapk-Android/tree/master/src/obfuscapk/obfuscators/virus_total)
 </details>
 
 
@@ -544,5 +544,5 @@ alphabetical order). Please refer to the source code of the project for more det
 ## ❱ License
 
 You are free to use this code under the
-[MIT License](https://github.com/ClaudiuGeorgiu/Obfuscapk/blob/master/LICENSE).
+[MIT License](https://github.com/nicolastinkl/Obfuscapk-Android/blob/master/LICENSE).
 
