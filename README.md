@@ -17,12 +17,6 @@ More details about **Obfuscapk** can be found in the paper
 "[Obfuscapk: An *open-source* black-box obfuscation tool for Android apps](https://doi.org/10.1016/j.softx.2020.100403)".
  
 
-## ❱ Demo
-
-![Demo](https://raw.githubusercontent.com/nicolastinkl/Obfuscapk-Android/master/docs/demo/cli.gif)
-
-
-
 ## ❱ Architecture
 
 ![Architecture](https://raw.githubusercontent.com/nicolastinkl/Obfuscapk-Android/master/docs/architecture/architecture.png)
